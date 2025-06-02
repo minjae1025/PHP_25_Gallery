@@ -14,16 +14,17 @@ if ($ext == "jpg" || $ext == "JPG" || $ext == "jpeg" || $ext == "png" || $ext ==
     $upload_file = $dir.$file;
     
     if(move_uploaded_file($tmp_name, $upload_file)) {
-        echo "<br> success!!! <br>";
+        echo "<script>alert(`업로드 성공!`)</script>";
     }
     else {
-        echo "<br> failed!";
+        echo "<script>alert(`업로드 실패!`)</script>";
     }
 }
 else {
     echo "<script>alert('이미지가 아닙니다!')</script>";
-    echo "<script>history.back()</script>";
+    
 }
+echo "<script>history.go(-2)</script>";
 
 
 

@@ -7,9 +7,6 @@
     <title>갤러리</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
     <style>
-        nav {
-        }
-
         .my {
             display: flex;
             justify-content: space-between;
@@ -20,12 +17,12 @@
             width: 100%;
         }
 
-        .cell {
+        .imgCell {
             width: 20%;
-            padding: 10px;
+            padding: 5px;
         }
 
-        .cell img {
+        .imgCell img {
             display: block;
             width: 100%;
         }
@@ -55,6 +52,15 @@
         td {
             border: 1px solid black;
         }
+
+        .imgName {
+            margin: 0;
+            text-align: center;
+        }
+
+        .numCell {
+            border-top: 2.5px solid black;
+        }
     </style>
 </head>
 
@@ -78,56 +84,59 @@
     $scan = scandir($dir);
     ?>
     <table>
-        <tr>
-            <?php
-            for ($i = 2; $i < count($scan); $i++) {
-                if (($i - 2) % 5 == 0) {
-                    echo "</tr>";
-                    echo "<tr>";
-                    $max = $i + 5;
-                    if ($max > count($scan)) {
-                        $max = count($scan);
-                    }
-                    for ($j = $i; $j < $max; $j++) {
-                        ?>
-                        <td>
-                            <p class="imgNum">사진<?= $j - 1 ?></p>
-                        </td>
-
-                        <?php
-                    }
-                    echo "</tr>";
-                    echo "<tr>";
-                    for ($j = $i; $j < $max; $j++) {
-                        ?>
-                        <td class="cell">
-                            <div class="imgBox">
-                                <img src="<?= $dir . $scan[$j] ?>" class="image">
-                            </div>
-                        </td>
-
-                        <?php
-                    }
-                    echo "</tr>";
-                    echo "<tr>";
-                } else if (($i - 1) == count($scan)) {
-                    echo "</tr>";
-                }
-                ?>
-                    
-                <?php
-
+        <?php
+        for ($i = 2; $i < count($scan); $i += 5) {
+            echo "<tr>";
+            $max = $i + 5;
+            if ($max > count($scan)) {
+                $max = count($scan);
             }
-            ?>
+            for ($j = $i; $j < $max; $j++) {
+                ?>
+                <td class="numCell">
+                    <p class="imgNum">사진<?= $j - 1 ?></p>
+                </td>
+
+                <?php
+            }
+            echo "</tr>";
+
+            echo "<tr>";
+            for ($j = $i; $j < $max; $j++) {
+                ?>
+                <td class="imgCell">
+                    <div class="imgBox">
+                        <img src="<?= $dir . $scan[$j] ?>" class="image">
+                    </div>
+                </td>
+
+                <?php
+            }
+            echo "</tr>";
+            for ($j = $i; $j < $max; $j++) {
+                ?>
+                <td>
+                    <p class="imgName"><?= $scan[$j] ?></p>
+                </td>
+
+                <?php
+            }
+
+        }
+        ?>
     </table>
 
 
     <script>
+        window.oncontextmenu = function () {
+            return false;
+        }
         const images = document.getElementsByClassName("image");
         for (let i = 0; i < images.length; i++) {
             images[i].addEventListener("click", function () {
                 window.open(images[i].src, "이미지", open);
             });
+
         }
     </script>
 
