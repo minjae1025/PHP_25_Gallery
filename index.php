@@ -23,6 +23,7 @@
 
         .display-1 {
             text-align: center;
+
         }
 
         .myButtons {
@@ -41,8 +42,7 @@
             text-align: center;
         }
 
-        .imgBox {
-        }
+        .imgBox {}
     </style>
 </head>
 
@@ -54,8 +54,8 @@
                 <a href="image_upload.html" id="imgUpload">사진 업로드</a>
             </div>
             <div class="myButtons">
-                <button id="loginButton" class="button">로그인</button>
-                <button id="SigninButton" class="button">회원가입</button>
+                <button id="loginButton" class="button" onclick="location.href='login.html'">로그인</button>
+                <button id="SigninButton" class="button" onclick="location.href='sign_in.html'">회원가입</button>
             </div>
 
         </div>
@@ -74,19 +74,30 @@
                 if (($i - 2) % 5 == 0) {
                     echo "</tr>";
                     echo "<tr>";
+                    $max = $i + 5;
+                    if ($max > count($scan)) {
+                        $max = count($scan);
+                    }
+                    for ($j = $i; $j < $max; $j++) {
+                        ?>
+                        <td class="cell">
+                            <div class="imgBox">
+                                <img src="<?= $dir . $scan[$j] ?>" class="image">
+                            </div>
+                        </td>
+                        <?php
+                    }
+                    echo "</tr>";
+                    echo "<tr>";
                 } else if (($i - 1) == count($scan)) {
                     echo "</tr>";
                 }
                 ?>
-                <td class="cell">
-                    <div class="imgBox">
-                        <div class="imgNum">사진<?= $i - 1 ?></div>
-                        <img src="<?= $dir . $scan[$i] ?>" class="image">
-                    </div>
+                <td>
+                    <p class="imgNum">사진<?= $i - 1 ?></p>
                 </td>
                 <?php
             }
-
             ?>
     </table>
 
