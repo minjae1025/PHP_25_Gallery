@@ -1,31 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        button {
+        .loginBtn {
             text-align: center;
+        }
+
+        .sign {
+            text-align: end;
+            margin: 1px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+        }
+
+        fieldset {
+            border: 1px solid black;
+            border-radius: 10px;
         }
     </style>
 </head>
+
 <body>
-    <form action="login.php" method="post">
-        <table>
-            <tr>
-                <td>아이디 : </td>
-                <td><input type="text" name="userId" required></td>
-            </tr>
-            <tr>
-                <td>비밀번호 : </td>
-                <td><input type="text" name="userPw" required></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">로그인</button></td>
-            </tr>
-        </table>
-        
-    </form>
+    <main>
+        <fieldset>
+            <legend>
+                로그인
+            </legend>
+            <form action="login.php" method="post">
+                <table>
+                    <tr>
+                        <td>
+                            <p class="sign">아이디 :</p>
+                        </td>
+                        <td><input type="text" name="userId" required></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="sign">비밀번호 :</p>
+                        </td>
+                        <td><input type="text" name="userPw" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="loginBtn">
+                                <button type="submit">로그인</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+        </fieldset>
+
+    </main>
+
 </body>
+
 </html>

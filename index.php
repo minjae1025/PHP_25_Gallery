@@ -113,6 +113,8 @@
                 <?php
             }
             echo "</tr>";
+            
+            echo "<tr>";
             for ($j = $i; $j < $max; $j++) {
                 ?>
                 <td>
@@ -121,6 +123,7 @@
 
                 <?php
             }
+            echo "</tr>";
 
         }
         ?>

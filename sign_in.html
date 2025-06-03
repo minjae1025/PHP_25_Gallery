@@ -22,21 +22,30 @@
             margin: 1px;
         }
 
-        #join {
+        #joinBtn {
             text-align: center;
         }
 
-        #main {
+        main {
             display: flex;
             justify-content: center;
+        }
+
+        fieldset {
+            border: 1px solid black;
+            border-radius: 10px;
         }
     </style>
 
 </head>
 
 <body>
-    <div id="main">
-        <form action="sign_in.php" method="post" onsubmit="return pwCheck()">
+    <main>
+        <fieldset>
+            <legend>
+                회원가입
+            </legend>
+            <form action="sign_in.php" method="post" onsubmit="return pwCheck()">
             <table>
                 <tr>
                     <td>
@@ -58,14 +67,15 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <div id="join">
+                        <div id="joinBtn">
                             <button type="submit">가입</button>
                         </div>
                     </td>
                 </tr>
             </table>
         </form>
-    </div>
+        </fieldset>
+    </main>
 
 </body>
 
